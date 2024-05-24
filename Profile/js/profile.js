@@ -12,8 +12,10 @@ let allinHInput = inHouseForm.querySelectorAll("input");
 let mClose = document.querySelectorAll(".btn-close");
 let TBodyList = document.querySelector(".booking-list");
 let TInHList = document.querySelector(".inhouse-list");
-
 let bregBtn = document.querySelector(".b-register-btn");
+let inHBtn = document.querySelector(".in-house-reg-btn");
+
+
 if (sessionStorage.getItem("__au__") == null) {
   window.location = "../index.html";
 }
@@ -46,7 +48,8 @@ const fetchData = (key) => {
 };
 
 allBData = fetchData(user + "_allBdata");
-allInHData = fetchData(user + "_allInHData");
+allInHData = fetchData(user + "_allInHdata");
+
 
 // Registration coding
 function registrationCode(Input,array,key){
@@ -63,29 +66,12 @@ function registrationCode(Input,array,key){
 }
 
 
-// start booking coding
-bookingForm.addEventListener("submit", (e) => {
-  e.preventDefault();
-  registrationCode(allBInput,allBData,user + "_allBdata")
-  mClose[0].click();
-  bookingForm.reset("");
-  // window.location.reload()
-  ShowData(TBodyList,allBData);
-});
 
-// start Inhouse coding
-inHouseForm.addEventListener("submit", (e) => {
-  e.preventDefault();
-  registrationCode(allinHInput,allInHData,user + "_allInHdata")
-  console.log(allInHData)
-  mClose[1].click();
-  bookingForm.reset("");
-  // window.location.reload()
-  ShowData(TInHList,allInHData);
-});
+
+
 
 // Showing Booking Data
-const ShowData = (element,array) => {
+const ShowData = (element,array,keys) => {
   element.innerHTML = "";
   array.forEach((item, index) => {
     element.innerHTML += `<tr>
@@ -109,32 +95,68 @@ const ShowData = (element,array) => {
         </td>
         </tr>`;
   });
-  DelBookingData();
-  updateBtn();
+  DelData(element,array,keys);
+  updateBtn(element,array,keys);
 };
-ShowData(TBodyList,allBData);
-ShowData(TInHList,allInHData);
 
-console.log(allBData)
-console.log(allInHData)
-// Edit Booking Data
-function updateBtn(){
-  let AllEditBtn = TBodyList.querySelectorAll(".ed-btn")
+
+// start booking coding
+bookingForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+  registrationCode(allBInput,allBData,user + "_allBdata");
+  mClose[0].click();
+  bookingForm.reset("");
+  // window.location.reload()
+  ShowData(TBodyList,allBData,user + "_allBdata");
+});
+ShowData(TBodyList,allBData,user + "_allBdata");
+
+
+// start Inhouse coding
+inHouseForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+  registrationCode(allinHInput,allInHData,user+"_allInHdata");
+  mClose[1].click();
+  inHouseForm.reset("");
+  // window.location.reload()
+  ShowData(TInHList,allInHData,user+"_allInHdata");
+ 
+});
+ShowData(TInHList,allInHData,user+"_allInHdata");
+
+
+
+// Update Data Function
+function updateBtn(element,array,keys){
+  let AllEditBtn = element.querySelectorAll(".ed-btn")
   
   AllEditBtn.forEach((btn,index)=>{
     btn.onclick = ()=>{
-     
-      bregBtn.click();
-      let AllBBtn = bookingForm.querySelectorAll("button");
-      AllBBtn[0].classList.add("d-none")
-      AllBBtn[1].classList.remove("d-none")
-      let obj = allBData[index];
-      allBInput[0].value = obj.fullname
-      allBInput[1].value = obj.contact
-      allBInput[2].value = obj.room
-      allBInput[3].value = obj.checkin
-      allBInput[4].value = obj.checkout
-      AllBBtn[1].onclick = ()=>{
+        
+      let tmp = keys.split("_")
+      
+      tmp == "allBdata" ? bregBtn.click() : inHBtn.click()
+      
+      let AllBtn = tmp == "allBdata" ?
+      bookingForm.querySelectorAll("button"):
+      inHouseForm.querySelectorAll("button");
+
+
+      let AllInput = tmp == "allBdata" ?
+      bookingForm.querySelectorAll("input"):
+      inHouseForm.querySelectorAll("input");
+
+      AllBtn[0].classList.add("d-none")
+      AllBtn[1].classList.remove("d-none")
+      
+      let obj = array[index];
+      AllInput[0].value = obj.fullname
+      AllInput[1].value = obj.contact
+      AllInput[2].value = obj.room
+      AllInput[3].value = obj.checkin
+      AllInput[4].value = obj.checkout
+      
+      AllBtn[1].onclick = ()=>{
         
         swal({
           title: "Are you sure?",
@@ -145,18 +167,20 @@ function updateBtn(){
         }).then((willUpdate) => {
           if (willUpdate) {
             let formData = { checkinat: new Date().toLocaleString() };
-            for (el of allBInput) {
+            for (el of AllInput) {
               let key = el.name;
               let value = el.value;
               formData[key] = value;
+              
         }
-              allBData[index]=formData;
-              AllBBtn[1].classList.add("d-none")
-              AllBBtn[0].classList.remove("d-none")
-              bookingForm.reset('')
-              localStorage.setItem(user + "_allBdata",JSON.stringify(allBData));
-              ShowBookingData();
-              modalClose.click();
+              array[index]=formData;
+              AllBtn[1].classList.add("d-none")
+              AllBtn[0].classList.remove("d-none")
+              // console.log(formData)
+              tmp == "allBdata" ? bookingForm.reset('') : inHouseForm.reset('')
+              localStorage.setItem(keys,JSON.stringify(array));
+              ShowData(element,array,keys);
+              tmp == "allBdata" ? mClose[0].click() : mClose[1].click()
             swal(" Your Booking has been Updated!", {
               icon: "success",
             });
@@ -175,9 +199,9 @@ function updateBtn(){
   )
 }
 
-// Delete Booking Data
-function DelBookingData() {
-  let allBDelBtn = TBodyList.querySelectorAll(".del-btn");
+// Delete  Data Function
+function DelData(element,array,keys) {
+  let allBDelBtn = element.querySelectorAll(".del-btn");
   allBDelBtn.forEach((btn, index) => {
     btn.onclick = () => {
       swal({
@@ -188,9 +212,9 @@ function DelBookingData() {
         dangerMode: true,
       }).then((willDelete) => {
         if (willDelete) {
-          allBData.splice(index, 1);
-          localStorage.setItem(user + "_allBdata", JSON.stringify(allBData));
-          ShowBookingData();
+          array.splice(index, 1);
+          localStorage.setItem(keys, JSON.stringify(array));
+          ShowData(element,array,keys);
           swal("Poof! Your Booking has been deleted!", {
             icon: "success",
           });
