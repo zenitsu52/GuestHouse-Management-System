@@ -31,7 +31,8 @@
             <div class="navbar-collapse collapse" id="myMenu">
                 <ul class="navbar-nav w-100 justify-content-end">
                     <div class="input-group w-50 mx-5">
-                        <input type="search" class="form-control" placeholder="Search by Name,Email,Room no....">
+                        <input type="search" class="search-element form-control"
+                            placeholder="Search by Name,Contact,Room no....">
                         <span class="input-group-text action-btn  text-white btn">Search</span>
                     </div>
                     <button class="btn action-btn logout-btn text-white fw-bold">Log Out</button>
@@ -47,203 +48,288 @@
                 <!-- nav tab -->
                 <ul class="nav nav-tabs">
                     <li class="nav-item ">
-                        <a href="#booking" class="nav-link " data-bs-toggle="tab">
+                        <a href="#booking" class="nav-link active tab-btn " data-bs-toggle="tab">
                             Booking
                         </a>
                     </li>
-                    <li class="nav-item active">
-                        <a href="#inhouse" class="nav-link" data-bs-toggle="tab">
+                    <li class="nav-item ">
+                        <a href="#inhouse" class="nav-link tab-btn " data-bs-toggle="tab">
                             In House
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="#signup" class="nav-link " data-bs-toggle="tab">
-                            Cashier
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#signup" class="nav-link " data-bs-toggle="tab">
+                        <a href="#archive" class="nav-link  tab-btn " data-bs-toggle="tab">
                             Archive
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a href="#cashier" class="nav-link " data-bs-toggle="tab">
+                            Cashier
+                        </a>
+                    </li>
+
                 </ul>
                 <!-- nav panes -->
                 <div class="tab-content">
-                    <div class="tab-pane  container mt-3" id="booking">
-                        
-                            <div class="row text-center my-5 ">
-                                <div class="col-md-4 ">
-                                    <button 
-                                    data-bs-toggle="modal"
-                                    data-bs-target="#registration-modal" 
+                    <div class="tab-pane search-pane active container mt-3" id="booking">
+
+                        <div class="row text-center my-5 ">
+                            <div class="col-md-4 ">
+                                <button data-bs-toggle="modal" data-bs-target="#registration-modal"
                                     class="btn action-btn b-register-btn text-white">
                                     Register</button>
-                                </div>
-                             <div class="col-md-4 "> 
-                                 <button class="btn action-btn text-white">Print</button>
-                                 </div>
-                             <div class="col-md-4 ">
-                                 <button class="btn action-btn text-white">Occupancy</button>
-                             </div>
-                         </div>
-                         <div>
-                             <h1> All Booking Data</h1>
-                             <table class="table text-center table-striped">
-                                 <thead>
-                                     <tr>
-                                         <th>Sr.No</th>
-                                         <th>Full Name</th>
-                                         <th>Contact</th>  
-                                         <th>Room No.</th>
-                                         <th>Check-In</th>
-                                         <th>Check-Out</th>
-                                         <th>Registered At</th>
-
-                                         <th>Action</th>
-                                     </tr>
-                                 </thead>
-                                 <tbody class="booking-list">
-                                     
-                                 </tbody>
-                             </table>
-                         </div>
-                     
-                    
-                 </div>
-                 <div class="tab-pane active container mt-3" id="inhouse">
-                        
-                    <div class="row text-center my-5 ">
-                        <div class="col-md-4 ">
-                            <button 
-                            data-bs-toggle="modal"
-                            data-bs-target="#inhouse-modal" 
-                            class="btn action-btn in-house-reg-btn text-white">
-                            Register</button>
+                            </div>
+                            <div class="col-md-4 ">
+                                <button class="btn action-btn text-white">Print</button>
+                            </div>
+                            <div class="col-md-4 ">
+                                <button class="btn action-btn text-white">Occupancy</button>
+                            </div>
                         </div>
-                     <div class="col-md-4 "> 
-                         <button class="btn action-btn text-white">Print</button>
-                         </div>
-                     <div class="col-md-4 ">
-                         <button class="btn action-btn text-white">Occupancy</button>
-                     </div>
-                 </div>
-                 <div>
-                     <h1> All InHouse Data</h1>
-                     <table class="table text-center table-striped">
-                         <thead>
-                             <tr>
-                                 <th>Sr.No</th>
-                                 <th>Full Name</th>
-                                 <th>Contact</th>  
-                                 <th>Room No.</th>
-                                 <th>Check-In</th>
-                                 <th>Check-Out</th>
-                                 <th>Registered At</th>
+                        <div>
+                            <h1> All Booking Data</h1>
+                            <table class="table text-center table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Sr.No</th>
+                                        <th>Full Name</th>
+                                        <th>Contact</th>
+                                        <th>Room No.</th>
+                                        <th>Check-In</th>
+                                        <th>Check-Out</th>
+                                        <th>Registered At</th>
 
-                                 <th>Action</th>
-                             </tr>
-                         </thead>
-                         <tbody class="inhouse-list">
-                             
-                         </tbody>
-                     </table>
-                 </div>
-             
-            
-         </div>
-             </div>
-         </div>
-         
-     </div>
- </div>
- <!-- start modals Coding -->
- <div class="modal animate__animated animate__zoomIn" id="registration-modal">
-     <div class="modal-dialog modal-lg">
-         <div class="modal-content">
-             <div class="modal-header">
-                 <h5>Registration Form</h5>
-                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-             </div>
-             <div class="body-body  p-4">
-            <form  class="booking-fm">
-            <div class="row" >
-                <input required type="text" name="fullname" placeholder="Full Name" class=" mb-3 form-control">
-            </div>
-            <div class="row">
-                <input required type="number" name="contact" placeholder="Contact" class=" mb-3 form-control">
-            </div>
-            <div class="row">
-                <input required type="number" name="room" placeholder="Room No." class=" mb-3 form-control">
-            </div>
-            <div class="row">
-                <label> Check-In Date</label>
-                <input required type="date" name="checkin" placeholder="Check-In Date" class=" mb-3 form-control">
-            </div>
-            <div class="row">
-                <label> Check-Out Date</label>
-                <input required type="date" name="checkout" placeholder="Check-Out" class=" mb-3 form-control">
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="booking-list">
 
-            </div>
-            <div class="row">
-                <button type="submit" class="btn action-btn  form-control text-white">Register</button>
-                <button type="button" class="btn bg-danger d-none form-control text-white">Update</button>
+                                </tbody>
+                            </table>
+                        </div>
 
+
+                    </div>
+                    <div class="tab-pane search-pane  container mt-3" id="inhouse">
+
+                        <div class="row text-center my-5 ">
+                            <div class="col-md-4 ">
+                                <button data-bs-toggle="modal" data-bs-target="#inhouse-modal"
+                                    class="btn action-btn in-house-reg-btn text-white">
+                                    Register</button>
+                            </div>
+                            <div class="col-md-4 ">
+                                <button class="btn action-btn text-white">Print</button>
+                            </div>
+                            <div class="col-md-4 ">
+                                <button class="btn action-btn text-white">Occupancy</button>
+                            </div>
+                        </div>
+                        <div>
+                            <h1> All InHouse Data</h1>
+                            <table class="table text-center table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Sr.No</th>
+                                        <th>Full Name</th>
+                                        <th>Contact</th>
+                                        <th>Room No.</th>
+                                        <th>Check-In</th>
+                                        <th>Check-Out</th>
+                                        <th>Registered At</th>
+
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="inhouse-list">
+
+                                </tbody>
+                            </table>
+                        </div>
+
+
+                    </div>
+                    <div class="tab-pane search-pane  container mt-3" id="archive">
+
+                        <div class="row text-center my-5 ">
+                            <!-- <div class="col-md-4 ">
+                                <button 
+                                data-bs-toggle="modal"
+                                data-bs-target="#registration-modal" 
+                                class="btn action-btn b-register-btn text-white">
+                                Register</button>
+                            </div> -->
+                            <div class="col-md-4 ">
+                                <button class="btn action-btn text-white">Print</button>
+                            </div>
+                            <div class="col-md-4 ">
+                                <button class="btn action-btn text-white">Occupancy</button>
+                            </div>
+                        </div>
+                        <div>
+                            <h1> All Archive Data</h1>
+                            <table class="table text-center table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Sr.No</th>
+                                        <th>Full Name</th>
+                                        <th>Contact</th>
+                                        <th>Room No.</th>
+                                        <th>Check-In</th>
+                                        <th>Check-Out</th>
+                                        <th>Registered At</th>
+
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="archive-list">
+
+                                </tbody>
+                            </table>
+                        </div>
+
+
+                    </div>
+                </div>
             </div>
-            
-            </form>
-                       
-                           
+
+        </div>
+    </div>
+    <!-- start modals Coding -->
+    <div class="modal animate__animated animate__zoomIn" id="registration-modal">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5>Registration Form</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="body-body  p-4">
+                    <form class="booking-fm">
+                        <div class="row">
+                            <input required type="text" name="fullname" placeholder="Full Name"
+                                class=" mb-3 form-control">
+                        </div>
+                        <div class="row">
+                            <input required type="number" name="contact" placeholder="Contact"
+                                class=" mb-3 form-control">
+                        </div>
+                        <div class="row">
+                            <input required type="number" name="room" placeholder="Room No." class=" mb-3 form-control">
+                        </div>
+                        <div class="row">
+                            <label> Check-In Date</label>
+                            <input required type="date" name="checkin" placeholder="Check-In Date"
+                                class=" mb-3 form-control">
+                        </div>
+                        <div class="row">
+                            <label> Check-Out Date</label>
+                            <input required type="date" name="checkout" placeholder="Check-Out"
+                                class=" mb-3 form-control">
+
+                        </div>
+                        <div class="row">
+                            <button type="submit" class="btn action-btn  form-control text-white">Register</button>
+                            <button type="button" class="btn bg-danger d-none form-control text-white">Update</button>
+
+                        </div>
+
+                    </form>
+
+
+                </div>
             </div>
         </div>
     </div>
-</div>
-<div class="modal animate__animated animate__zoomIn" id="inhouse-modal">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5>In House Form</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    <div class="modal animate__animated animate__zoomIn" id="inhouse-modal">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5>In House Form</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="body-body  p-4">
+                    <form class="inhouse-fm">
+                        <div class="row">
+                            <input required type="text" name="fullname" placeholder="Full Name"
+                                class=" mb-3 form-control">
+                        </div>
+                        <div class="row">
+                            <input required type="number" name="contact" placeholder="Contact"
+                                class=" mb-3 form-control">
+                        </div>
+                        <div class="row">
+                            <input required type="number" name="room" placeholder="Room No." class=" mb-3 form-control">
+                        </div>
+                        <div class="row">
+                            <label> Check-In Date</label>
+                            <input required type="date" name="checkin" placeholder="Check-In Date"
+                                class=" mb-3 form-control">
+                        </div>
+                        <div class="row">
+                            <label> Check-Out Date</label>
+                            <input required type="date" name="checkout" placeholder="Check-Out"
+                                class=" mb-3 form-control">
+
+                        </div>
+                        <div class="row">
+                            <button type="submit" class="btn action-btn  form-control text-white">Register</button>
+                            <button type="button" class="btn bg-danger d-none form-control text-white">Update</button>
+
+                        </div>
+
+                    </form>
+
+
+                </div>
             </div>
-            <div class="body-body  p-4">
-           <form  class="inhouse-fm">
-           <div class="row" >
-               <input required type="text" name="fullname" placeholder="Full Name" class=" mb-3 form-control">
-           </div>
-           <div class="row">
-               <input required type="number" name="contact" placeholder="Contact" class=" mb-3 form-control">
-           </div>
-           <div class="row">
-               <input required type="number" name="room" placeholder="Room No." class=" mb-3 form-control">
-           </div>
-           <div class="row">
-               <label> Check-In Date</label>
-               <input required type="date" name="checkin" placeholder="Check-In Date" class=" mb-3 form-control">
-           </div>
-           <div class="row">
-               <label> Check-Out Date</label>
-               <input required type="date" name="checkout" placeholder="Check-Out" class=" mb-3 form-control">
+        </div>
+    </div>
+    <div class="modal animate__animated animate__zoomIn" id="archive-modal">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5>Archive Form</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="body-body  p-4">
+                    <form class="archive-fm">
+                        <div class="row">
+                            <input required type="text" name="fullname" placeholder="Full Name"
+                                class=" mb-3 form-control">
+                        </div>
+                        <div class="row">
+                            <input required type="number" name="contact" placeholder="Contact"
+                                class=" mb-3 form-control">
+                        </div>
+                        <div class="row">
+                            <input required type="number" name="room" placeholder="Room No." class=" mb-3 form-control">
+                        </div>
+                        <div class="row">
+                            <label> Check-In Date</label>
+                            <input required type="date" name="checkin" placeholder="Check-In Date"
+                                class=" mb-3 form-control">
+                        </div>
+                        <div class="row">
+                            <label> Check-Out Date</label>
+                            <input required type="date" name="checkout" placeholder="Check-Out"
+                                class=" mb-3 form-control">
 
-           </div>
-           <div class="row">
-               <button type="submit" class="btn action-btn  form-control text-white">Register</button>
-               <button type="button" class="btn bg-danger d-none form-control text-white">Update</button>
+                        </div>
+                        <div class="row">
+                            <button type="submit" class="btn action-btn  form-control text-white">Register</button>
+                            <button type="button" class="btn bg-danger d-none form-control text-white">Update</button>
 
-           </div>
-           
-           </form>
-                      
-                          
-           </div>
-       </div>
-   </div>
-</div>
-<!-- end modals coding -->
+                        </div>
+
+                    </form>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end modals coding -->
 </body>
 <script src="js/profile.js"></script>
 
 </html>
-
-                                       
-
-                
-
