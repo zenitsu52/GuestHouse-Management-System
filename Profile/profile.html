@@ -17,9 +17,17 @@
     <!-- End Linking js -->
     <title>Profile</title>
 </head>
+<style>
+    @media print{
+        .no-print{
+            display: none;
+        }
+    }
+</style>
 
 <body>
-    <nav class="navbar navbar-expand-md fixed-top navbar-light">
+    <!--NAVBAR-->
+    <nav class=" no-print navbar navbar-expand-md fixed-top navbar-light">
         <div class="container-fluid">
             <img src="Profile Images//Images/IIT_Guwahati_Logo.svg.png" class="rounded-circle" width="60px">
             <a href="#" class="fw-bold mx-4 navbar-brand">
@@ -42,13 +50,13 @@
     </nav>
 
     <br><br><br>
-    <div class="container mt-5">
+    <div class="container-fluid mt-5">
         <div class="row">
             <div class="col-md-12">
                 <!-- nav tab -->
-                <ul class="nav nav-tabs">
+                <ul class="no-print nav nav-tabs">
                     <li class="nav-item ">
-                        <a href="#booking" class="nav-link active tab-btn " data-bs-toggle="tab">
+                        <a href="#booking" class="nav-link active  tab-btn " data-bs-toggle="tab">
                             Booking
                         </a>
                     </li>
@@ -63,7 +71,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="#cashier" class="nav-link " data-bs-toggle="tab">
+                        <a href="#cashier" class="nav-link" data-bs-toggle="tab">
                             Cashier
                         </a>
                     </li>
@@ -71,19 +79,20 @@
                 </ul>
                 <!-- nav panes -->
                 <div class="tab-content">
-                    <div class="tab-pane search-pane active container mt-3" id="booking">
+                    <!--BOOKING PANEL-->
+                    <div class="tab-pane search-pane active container-fluid mt-3" id="booking">
 
-                        <div class="row text-center my-5 ">
+                        <div class="row no-print text-center my-5 ">
                             <div class="col-md-4 ">
                                 <button data-bs-toggle="modal" data-bs-target="#registration-modal"
                                     class="btn action-btn b-register-btn text-white">
                                     Register</button>
                             </div>
                             <div class="col-md-4 ">
-                                <button class="btn action-btn text-white">Print</button>
+                                <button class="btn action-btn print-btn text-white">Print</button>
                             </div>
                             <div class="col-md-4 ">
-                                <button class="btn action-btn text-white">Occupancy</button>
+                                <button class="btn action-btn text-white">Total Bookings</button>
                             </div>
                         </div>
                         <div>
@@ -91,15 +100,15 @@
                             <table class="table text-center table-striped">
                                 <thead>
                                     <tr>
-                                        <th>Sr.No</th>
-                                        <th>Full Name</th>
-                                        <th>Contact</th>
-                                        <th>Room No.</th>
-                                        <th>Check-In</th>
-                                        <th>Check-Out</th>
-                                        <th>Registered At</th>
+                                        <th class="no-print">Sr.No</th>
+                                        <th class="text-nowrap">Full Name</th>
+                                        <th class="text-nowrap">Contact</th>
+                                        <th class="text-nowrap">Room No.</th>
+                                        <th class="text-nowrap">Check-In</th>
+                                        <th class="text-nowrap">Check-Out</th>
+                                        <th class="text-nowrap">Registered At</th>
 
-                                        <th>Action</th>
+                                        <th class="no-print">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody class="booking-list">
@@ -110,19 +119,20 @@
 
 
                     </div>
-                    <div class="tab-pane search-pane  container mt-3" id="inhouse">
+                    <!--INHOUSE PANEL-->
+                    <div class="tab-pane search-pane container-fluid mt-3" id="inhouse">
 
-                        <div class="row text-center my-5 ">
+                        <div class="row no-print text-center my-5 ">
                             <div class="col-md-4 ">
                                 <button data-bs-toggle="modal" data-bs-target="#inhouse-modal"
                                     class="btn action-btn in-house-reg-btn text-white">
                                     Register</button>
                             </div>
                             <div class="col-md-4 ">
-                                <button class="btn action-btn text-white">Print</button>
+                                <button class="btn action-btn print-btn text-white">Print</button>
                             </div>
                             <div class="col-md-4 ">
-                                <button class="btn action-btn text-white">Occupancy</button>
+                                <button class="btn action-btn text-white">Total InHouse</button>
                             </div>
                         </div>
                         <div>
@@ -130,7 +140,7 @@
                             <table class="table text-center table-striped">
                                 <thead>
                                     <tr>
-                                        <th>Sr.No</th>
+                                        <th class="no-print">Sr.No</th>
                                         <th>Full Name</th>
                                         <th>Contact</th>
                                         <th>Room No.</th>
@@ -138,7 +148,7 @@
                                         <th>Check-Out</th>
                                         <th>Registered At</th>
 
-                                        <th>Action</th>
+                                        <th class="no-print">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody class="inhouse-list">
@@ -149,9 +159,10 @@
 
 
                     </div>
-                    <div class="tab-pane search-pane  container mt-3" id="archive">
+                    <!--ARCHIVE PANEL-->
+                    <div class="tab-pane search-pane container-fluid mt-3" id="archive">
 
-                        <div class="row text-center my-5 ">
+                        <div class="row no-print my-5 ">
                             <!-- <div class="col-md-4 ">
                                 <button 
                                 data-bs-toggle="modal"
@@ -159,11 +170,10 @@
                                 class="btn action-btn b-register-btn text-white">
                                 Register</button>
                             </div> -->
-                            <div class="col-md-4 ">
-                                <button class="btn action-btn text-white">Print</button>
-                            </div>
-                            <div class="col-md-4 ">
-                                <button class="btn action-btn text-white">Occupancy</button>
+                            <div class="no-print col-md-6 ">
+                                <button class="btn action-btn print-btn text-white">Print</button>
+
+                                <button class="btn action-btn text-white">Total Archives</button>
                             </div>
                         </div>
                         <div>
@@ -171,7 +181,7 @@
                             <table class="table text-center table-striped">
                                 <thead>
                                     <tr>
-                                        <th>Sr.No</th>
+                                        <th class="no-print">Sr.No</th>
                                         <th>Full Name</th>
                                         <th>Contact</th>
                                         <th>Room No.</th>
@@ -179,7 +189,7 @@
                                         <th>Check-Out</th>
                                         <th>Registered At</th>
 
-                                        <th>Action</th>
+                                        <th class="no-print">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody class="archive-list">
@@ -190,12 +200,66 @@
 
 
                     </div>
+                    <!--CASHIER PANEL-->
+                    <div class="tab-pane cashier-pane container-fluid mt-3" id="cashier">
+
+                        <div class="row text-center no- my-3 ">
+
+                        </div>
+                        <div>
+                            <div>
+                                <h1> All Cashier Data</h1>
+                                <table class="table text-center table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>Sr.No</th>
+                                            <th>Cashier Name</th>
+                                            <th>Cashier ID</th>
+                                            <th>Room No</th>
+                                            <th>Date/Time</th>
+                                            <th>Amount</th>
+
+                                        </tr>
+                                    </thead>
+                                    <tbody class="cashier-list">
+
+                                    </tbody>
+                                </table>
+                                <div class="d-flex mt-5 align-items-center justify-content-between">
+                                    <h3 style="margin-left: 40px; font-size:23px" class="fa-solid">Total</h3>
+                                    <h3 class="total" style="margin-right: 60px;">6000</h3>
+                                </div>
+                            </div>
+                            <div class="row text-center no-print my-5 ">
+
+                                <div class="col-md-3 
+                             ">
+                                    <button data-bs-toggle="modal" data-bs-target="#cashier-modal"
+                                        class="btn action-btn text-white">Add Cash</button>
+                                </div>
+                                <div class="col-md-3 ">
+                                    <button class="btn close-cashier-btn action-btn text-white">Close Cashier</button>
+                                </div>
+                                <div class="col-md-3 ">
+                                     
+                                    <button onclick="showArchCashierFunc()" data-bs-toggle="modal" data-bs-target="#cashier-Arch-modal"
+                                        class="btn action-btn text-white">Archive Cashier</button>
+                                </div>
+                                <div class="col-md-3 ">
+                                    <button class="btn action-btn print-btn text-white">Print</button>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
                 </div>
             </div>
 
         </div>
     </div>
     <!-- start modals Coding -->
+    <!--REGISTRATION MODAL-->
     <div class="modal animate__animated animate__zoomIn" id="registration-modal">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
@@ -240,6 +304,7 @@
             </div>
         </div>
     </div>
+    <!--INHOUSE MODAL-->
     <div class="modal animate__animated animate__zoomIn" id="inhouse-modal">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
@@ -284,6 +349,7 @@
             </div>
         </div>
     </div>
+    <!--ARCHIVE MODAL-->
     <div class="modal animate__animated animate__zoomIn" id="archive-modal">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
@@ -322,6 +388,85 @@
                         </div>
 
                     </form>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Cashier  Modal-->
+    <div class="modal animate__animated animate__zoomIn" id="cashier-modal">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5>Cashier Form</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="body-body  p-4">
+                    <form class="cashier-fm">
+                        <div class="row">
+                            <input required type="text" name="cashier" placeholder="Cashier Name"
+                                style="background-color:rgb(236, 232, 232);" class=" mb-3  form-control">
+                        </div>
+                        <div class="row">
+                            <input required type="number" name="id" placeholder="Cashier ID"
+                                style="background-color:rgb(236, 232, 232);" class=" mb-3 form-control">
+                        </div>
+                        <div class="row">
+                            <input required type="number" name="room" placeholder="Room No." class=" mb-3 form-control">
+                        </div>
+                        <div class="row">
+                            <input required type="number" name="amount" placeholder="Amount" class=" mb-3 form-control">
+                        </div>
+
+                        <div class="row">
+                            <button type="submit" class="btn action-btn  form-control text-white">Register</button>
+
+                        </div>
+
+                    </form>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Cashier Archive Modal-->
+    <div class="modal animate__animated animate__zoomIn" id="cashier-Arch-modal">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5>Archive Cash</h5>
+                    <button class="btn action-btn arch-print-btn no-print mx-3 mb-1 text-white">Print</button>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="body-body  p-4">
+                    <div>
+                        <div>
+                            
+                            <table class="table text-center table-striped">
+                                <thead>
+                                    <tr>
+                                        <th class="no-print" >Sr.No</th>
+                                        <th>Cashier Name</th>
+                                        <th>Cashier ID</th>
+                                        <th>Date/Time</th>
+                                        <th>Amount</th>
+
+                                    </tr>
+                                </thead>
+                                <tbody class="cashier-arch-list">
+
+                                </tbody>
+                            </table>
+                            <div class="d-flex mt-5 align-items-center justify-content-between">
+                                    <h3 style="margin-left: 40px; font-size:23px" class="fa-solid">Total</h3>
+                                    
+                                <h3 class="arch-total" style="margin-right: 60px;"></h3>
+                            </div>
+                        </div>
+
+                    </div>
 
 
                 </div>
