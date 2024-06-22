@@ -34,3 +34,24 @@
 /* .highlight{
 } */
 
+@media(max-width:767px) {
+    #search{
+        margin-left:20vw !important;
+        margin-bottom:10vw;
+        z-index: 100;
+    }
+
+    #full-scr{
+        height: 40vh;
+        width: 100%;
+        background-image: linear-gradient(#306f88,#6bb8e9) ;
+        position: fixed;
+        top: -100%;
+        z-index: 99;
+        border-bottom-left-radius:30px ;
+        border-bottom-right-radius:30px ;
+        transition: all ease 0.3s;
+    }
+
+}
+

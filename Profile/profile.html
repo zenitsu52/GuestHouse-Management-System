@@ -15,7 +15,8 @@
     <script src="js/bootstrap.js"></script>
     <script src="js/sweetalert.js"></script>
     <!-- End Linking js -->
-    <title>Profile</title>
+    <title>Welcome to GuestHouse, IIT Guwahati</title>
+    <link rel="shortcut icon" href="../Images/iitg-logo.png" type="image/x-icon">
 </head>
 <style>
     @media print{
@@ -33,12 +34,12 @@
             <a href="#" class="fw-bold mx-4 navbar-brand">
                 GUESTHOUSE
             </a>
-            <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#myMenu">
+            <button class="navbar-toggler" id="button-drop" data-bs-toggle="collapse" data-bs-target="#myMenu">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="navbar-collapse collapse" id="myMenu">
                 <ul class="navbar-nav w-100 justify-content-end">
-                    <div class="input-group w-50 mx-5">
+                    <div class="input-group w-50 mx-5" id="search">
                         <input type="search" class="search-element form-control"
                             placeholder="Search by Name,Contact,Room no....">
                         <span class="input-group-text action-btn  text-white btn">Search</span>
@@ -92,10 +93,10 @@
                                 <button class="btn action-btn print-btn text-white">Print</button>
                             </div>
                             <div class="col-md-4 ">
-                                <button class="btn action-btn text-white">Total Bookings</button>
+                                <button class="btn action-btn total-btn text-white">Total Bookings</button>
                             </div>
                         </div>
-                        <div>
+                        <div class="table-responsive">
                             <h1> All Booking Data</h1>
                             <table class="table text-center table-striped">
                                 <thead>
@@ -116,6 +117,9 @@
                                 </tbody>
                             </table>
                         </div>
+                        <div class="row py-5 show-booking-rooms">
+                            
+                        </div>
 
 
                     </div>
@@ -132,10 +136,10 @@
                                 <button class="btn action-btn print-btn text-white">Print</button>
                             </div>
                             <div class="col-md-4 ">
-                                <button class="btn action-btn text-white">Total InHouse</button>
+                                <button class="btn action-btn total-btn text-white">Total InHouse</button>
                             </div>
                         </div>
-                        <div>
+                        <div class="table-responsive">
                             <h1> All InHouse Data</h1>
                             <table class="table text-center table-striped">
                                 <thead>
@@ -156,6 +160,8 @@
                                 </tbody>
                             </table>
                         </div>
+                        <div class="row py-5 show-InHouse-rooms">
+                        </div>
 
 
                     </div>
@@ -173,10 +179,10 @@
                             <div class="no-print col-md-6 ">
                                 <button class="btn action-btn print-btn text-white">Print</button>
 
-                                <button class="btn action-btn text-white">Total Archives</button>
+                                <button class="btn action-btn total-btn text-white">Total Archives</button>
                             </div>
                         </div>
-                        <div>
+                        <div class="table-responsive">
                             <h1> All Archive Data</h1>
                             <table class="table text-center table-striped">
                                 <thead>
@@ -207,7 +213,7 @@
 
                         </div>
                         <div>
-                            <div>
+                            <div class="table-responsive">
                                 <h1> All Cashier Data</h1>
                                 <table class="table text-center table-striped">
                                     <thead>
@@ -232,8 +238,7 @@
                             </div>
                             <div class="row text-center no-print my-5 ">
 
-                                <div class="col-md-3 
-                             ">
+                                <div class="col-md-3 ">
                                     <button data-bs-toggle="modal" data-bs-target="#cashier-modal"
                                         class="btn action-btn text-white">Add Cash</button>
                                 </div>
@@ -435,7 +440,7 @@
     <div class="modal animate__animated animate__zoomIn" id="cashier-Arch-modal">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
-                <div class="modal-header">
+                <div class=" table-responsive modal-header">
                     <h5>Archive Cash</h5>
                     <button class="btn action-btn arch-print-btn no-print mx-3 mb-1 text-white">Print</button>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -474,6 +479,8 @@
         </div>
     </div>
     <!-- end modals coding -->
+
+    <div id="full-scr"></div>
 </body>
 <script src="js/profile.js"></script>
 

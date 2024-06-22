@@ -33,6 +33,10 @@ let ArchcashTotal = document.querySelector(".arch-total");
 let printBtn = document.querySelectorAll(".print-btn");
 let ArchCashprintBtn = document.querySelector(".arch-print-btn");
 let CashPane = document.querySelector(".cashier-pane");
+let allTotalBtn = document.querySelectorAll(".total-btn");
+let showBookingRoomEl = document.querySelector(".show-booking-rooms");
+let showInhouseRoomEl = document.querySelector(".show-InHouse-rooms")
+
 
 
 
@@ -83,7 +87,9 @@ allCashArchData = fetchData(user + "_allCashArchdata");
 
 // Registration coding
 function registrationCode(Input, array, key) {
-  let data = { checkinat: new Date().toLocaleString() };
+  let data = { checkinat: new Date().toLocaleString(),
+               inHouse:false
+             };
   for (el of Input) {
     let key = el.name;
     let value = el.value;
@@ -109,6 +115,7 @@ function CheckInandCheckOut(element, array, keys) {
         allInHData.unshift(data)
         localStorage.setItem(user + "_allInHdata", JSON.stringify(allInHData))
         ShowData(element, array, keys);
+        showBookingEl();
       }
       else if (tmp == "allArchivedata") {
         allBData.unshift(data)
@@ -170,7 +177,10 @@ bookingForm.addEventListener("submit", (e) => {
   bookingForm.reset("");
   // window.location.reload()
   ShowData(TBodyList, allBData, user + "_allBdata");
+  showTotal();
+  showBookingEl();
 });
+
 
 // start Inhouse coding
 inHouseForm.addEventListener("submit", (e) => {
@@ -180,8 +190,11 @@ inHouseForm.addEventListener("submit", (e) => {
   inHouseForm.reset("");
   // window.location.reload()
   ShowData(TInHList, allInHData, user + "_allInHdata");
-
+  showTotal();
+  showInhouseRoomCard()
 });
+
+
 
 // Start Archive Coding
 ArchiveForm.addEventListener("submit", (e) => {
@@ -191,7 +204,7 @@ ArchiveForm.addEventListener("submit", (e) => {
   inHouseForm.reset("");
   // window.location.reload()
   ShowData(TArchiveList, allArchiveData, user + "_allArchivedata");
-
+  showTotal();
 });
 
 // Start Cashier Coding
@@ -203,6 +216,8 @@ cashierForm.addEventListener("submit", (e) => {
   // window.location.reload()
   showCashierFunc();
 });
+
+
 
 // Update Data Function
 function updateBtn(element, array, keys) {
@@ -257,6 +272,8 @@ function updateBtn(element, array, keys) {
             tmp == "allBdata" ? bookingForm.reset('') : inHouseForm.reset('')
             localStorage.setItem(keys, JSON.stringify(array));
             ShowData(element, array, keys);
+            showTotal();
+            showInhouseRoomCard();
             tmp == "allBdata" ? mClose[0].click() : mClose[1].click()
             swal(" Your Booking has been Updated!", {
               icon: "success",
@@ -282,6 +299,7 @@ for (let btn of btnbtn) {
     ShowData(TInHList, allInHData, user + "_allInHdata");
     ShowData(TBodyList, allBData, user + "_allBdata");
     ShowData(TArchiveList, allArchiveData, user + "_allArchivedata");
+    showInhouseRoomCard();
   }
 }
 
@@ -310,6 +328,9 @@ function DelData(element, array, keys) {
       });
     };
   });
+  showTotal();
+  showBookingEl();
+  showInhouseRoomCard();
 }
 
 //Search Func
@@ -374,7 +395,7 @@ function defaultCashier() {
   cashInput[0].readOnly = "true";
   cashInput[0].placeholder = cashier.fullName
   cashInput[1].readOnly = "true";
-  cashInput[1].placeholder = cashier.cashierid
+  cashInput[1].placeholder = cashier.id
 }
 defaultCashier()
 
@@ -383,7 +404,7 @@ defaultCashier()
 function registrationCash(Input, array, key) {
   let data = { checkinat: new Date().toLocaleString() };
   data["cashier"] = cashier.fullName
-  data["id"] = cashier.cashierid
+  data["id"] = cashier.id
   data["room"] = Input[2].value
   data["amount"] = Input[3].value
 
@@ -416,13 +437,14 @@ closeCashier.onclick = () => {
 function showArchCashierFunc() {
   let totalamount = 0;
   TArchCashierList.innerHTML = "";
+  console.log(userInfo)
   allCashArchData.forEach((item, index) => {
     totalamount += +item.amount
     TArchCashierList.innerHTML += `<tr>
-      <td class="no-print" >${index + 1}</td>
+      <td class="no-print">${index + 1}</td>
       <td>${item.cashierName}</td>
-      <td>${JSON.parse(sessionStorage.getItem("__au__")).cashierid}</td>
-      <td class="text-nowrap">${item.createdAt}</td>
+      <td>${userInfo.id}</td>
+      <td>${item.createdAt}</td>
       <td>${item.amount}</td>
   </tr>`
   })
@@ -459,37 +481,34 @@ let BroomNo = JSON.parse(localStorage.getItem(user + "_allBdata"))
 let InHroomNo = JSON.parse(localStorage.getItem(user + "_allInHdata"))
 
 function checkBookedRooms(element) {
- 
+
 
   for (el of BroomNo) {
-    if (InHroomNo != null){
-      for(e of InHroomNo){
+    if (InHroomNo != null) {
+      for (e of InHroomNo) {
         if (el.room == element.value) {
           swal("Warning", `Room No.${el.room} is Booked for this Date:${el.checkin}`, 'warning').then(() => {
-            element.value = "";
+            // element.value = "";
           })
         }
         else if (e.room == element.value) {
           swal("Warning", `Room No.${e.room} is Occupied for this Date:${e.checkin}`, 'warning').then(() => {
-            element.value = "";
+            // element.value = "";
           })
         }
       }
-  }
-  else{
-    if (el.room == element.value) {
-      swal("Warning", `Room No.${el.room} is Booked for this Date:${el.checkin}`, 'warning').then(() => {
-        element.value = "";
-      })
     }
-  }
-      
-    
+    else {
+      if (el.room == element.value) {
+        swal("Warning", `Room No.${el.room} is Booked for this Date:${el.checkin}`, 'warning').then(() => {
+          element.value = "";
+        })
+      }
+    }
+
+
   }
 }
-// for (e of InHroomNo) {
- 
-// }
 
 allBInput[2].oninput = (e) => {
   checkBookedRooms(e.target)
@@ -499,14 +518,14 @@ allBInput[2].oninput = (e) => {
 function checkInHouseRooms(element) {
   let BroomNo = JSON.parse(localStorage.getItem(user + "_allBdata"))
   let InHroomNo = JSON.parse(localStorage.getItem(user + "_allInHdata"))
- 
+
 
   for (el of BroomNo) {
-    if (InHroomNo != null){
-      for(e of InHroomNo){
+    if (InHroomNo != null) {
+      for (e of InHroomNo) {
         if (el.room == element.value) {
           swal("Warning", `Room No.${el.room} is Booked for this Date:${el.checkin}`, 'warning').then(() => {
-            element.value = "";
+            // element.value = "";
           })
         }
         else if (e.room == element.value) {
@@ -515,18 +534,19 @@ function checkInHouseRooms(element) {
           })
         }
       }
-  }
-  else{
-    if (el.room == element.value) {
-      swal("Warning", `Room No.${el.room} is Booked for this Date:${el.checkin}`, 'warning').then(() => {
-        element.value = "";
-      })
     }
-  }
-      
-    
+    else {
+      if (el.room == element.value) {
+        swal("Warning", `Room No.${el.room} is Booked for this Date:${el.checkin}`, 'warning').then(() => {
+          element.value = "";
+        })
+      }
+    }
+
+
   }
 }
+
 for (let index = 2; index < 4; index++) {
   allinHInput[index].oninput = (e) => {
     checkInHouseRooms(e.target);
@@ -535,59 +555,136 @@ for (let index = 2; index < 4; index++) {
 }
 
 let currentDate = new Date().toLocaleDateString()
-let [month,day,year] = currentDate.split("/")
-let newDate = `${year}-${month > 9 ? month: 0+month}-${day}`
+let [month, day, year] = currentDate.split("/")
+let newDate = `${year}-${month > 9 ? month : 0 + month}-${day}`
 
 // CheckIn Date And CheckOut
 
-allBInput[3].oninput=(e)=>{
-     
-        let element = e.target;
-        if(element.value<newDate){
-          swal("Warning","You Have Selected Wrong Check-Out Date","warning")
-          element.value=""
-        }
-        else{allBInput[4].oninput=(el)=>{
-            let date = el.target;
-            if(element.value>=date.value){
-                  swal("Warning","You Have Selected Wrong Check-Out Date","warning")
-                  date.value=""
-            }
-            else{
-              
-            }
-          }
-        }
+allBInput[3].oninput = (e) => {
 
+  let element = e.target;
+  if (element.value < newDate) {
+    swal("Warning", "You Have Selected Wrong Check-In Date", "warning")
+    element.value = "";
+  }
+  else {
+    allBInput[4].oninput = (el) => {
+      let date = el.target;
+      if (element.value >= date.value) {
+        swal("Warning", "You Have Selected Wrong Check-Out Date", "warning")
+        date.value = ""
+      }
+      else {
+
+      }
+    }
   }
 
- allinHInput[3].oninput=(e)=>{
-     
-    let element = e.target;
-    if(element.value<newDate){
-      swal("Warning","You Have Selected Wrong Check-Out Date","warning")
-      element.value=""
-    }
-    else{allinHInput[4].oninput=(el)=>{
-        let date = el.target;
-        if(element.value>=date.value){
-              swal("Warning","You Have Selected Wrong Check-Out Date","warning")
-              date.value=""
-        }
-        else{
-          
-        }
+}
+
+allinHInput[3].oninput = (e) => {
+
+  let element = e.target;
+  if (element.value < newDate) {
+    swal("Warning", "You Have Selected Wrong Check-In Date", "warning")
+    element.value = ""
+  }
+  else {
+    allinHInput[4].oninput = (el) => {
+      let date = el.target;
+      if (element.value >= date.value) {
+        swal("Warning", "You Have Selected Wrong Check-Out Date", "warning")
+        date.value = ""
+      }
+      else {
+
+      }
     }
   }
 
 }
 
 
+// Show Total Bookings
+
+function showTotal() {
+  allTotalBtn[0].innerText = "Total Booking: " + allBData.length;
+  allTotalBtn[1].innerText = "Total Inhouse: " + allInHData.length;
+  allTotalBtn[2].innerText = "Total Archive: " + allArchiveData.length;
+}
+showTotal();
 
 
 
+// Show Booking Rooms Card
 
+function showBookingEl() {
+  showBookingRoomEl.innerHTML = '';
+  allBData.forEach((item, index) => {
+    showBookingRoomEl.innerHTML += `
+   <div class="card text-center px-0 col-md-2">
+         <div class="bg-success text-white fw-bold card-header">
+             ${item.room} 
+         </div>
+         <div class="card-body">
+            <p>${item.checkin}</p>
+            <p>To</p>
+            <p>${item.checkout}</p>
+          </div>
+    </div>`
+  })
+}
+showBookingEl();
+
+// Show Inhouse Room Card
+
+function showInhouseRoomCard(){
+    showInhouseRoomEl.innerHTML = '';
+    allInHData.forEach((item, index) => {
+      showInhouseRoomEl.innerHTML += `
+     <div class="card text-center px-0 col-md-2">
+           <div class="bg-success text-white fw-bold card-header">
+               ${item.room} 
+           </div>
+           <div class="card-body">
+               <img src="${item.inHouse ? "../Images/pngwing.com.png" :"../Images/48153.jpg"}" class="w-100" alt="">
+           </div>
+           <div class="card-footer">
+                <button class="in-btn action-btn btn text-white">In</button>
+                <button class="out-btn action-btn btn text-white">Out</button>
+           </div>
+      </div>`
+    })
     
+    //in coding
+    let allInbutton = showInhouseRoomEl.querySelectorAll(".in-btn")
+    allInbutton.forEach((btn,index)=>{
+       btn.onclick=()=>{
+          let data = allInHData[index]
+          data.inHouse = true
+          allInHData[index] = data;
+          localStorage.setItem(user+"_allInHData",JSON.stringify(allInHData))
+          showInhouseRoomCard()
+       }
+    })
+    //out coding
+    let allOutbutton = showInhouseRoomEl.querySelectorAll(".out-btn")
+    allOutbutton.forEach((btn,index)=>{
+       btn.onclick=()=>{
+        let data = allInHData[index]
+        data.inHouse = false
+        allInHData[index] = data;
+        localStorage.setItem(user+"_allInHData",JSON.stringify(allInHData))
+        showInhouseRoomCard()
+       }
+    })
+  
+  showBookingEl();
+}
+showInhouseRoomCard()
+
+
+
 
 
 
@@ -604,7 +701,19 @@ ShowData(TArchiveList, allArchiveData, user + "_allArchivedata");
 
 
 
-
+let drop = document.querySelector("#full-scr")
+let buttonDrop = document.querySelector("#button-drop")
+let flag = 0;
+buttonDrop.onclick = ()=>{
+  if(flag==0){
+    drop.style.top=0;
+    flag=1;
+  }
+  else{
+    drop.style.top="-100%";
+    flag=0;
+  }
+}
 
 
 
