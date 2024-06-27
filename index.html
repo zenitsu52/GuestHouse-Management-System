@@ -18,7 +18,7 @@
     <link rel="shortcut icon" href="../Images/iitg-logo.png" type="image/x-icon">
 </head>
 <body>
-    <nav class="navbar navbar-expand-md fixed-top navbar-light">
+    <!-- <nav class="navbar navbar-expand-md fixed-top navbar-light">
     <div class="container-fluid">
         <img src="Images/IIT_Guwahati_Logo.svg.png" class="rounded-circle" width="60px">
         <a href="#" class="fw-bold mx-4 navbar-brand">
@@ -35,52 +35,81 @@
             </ul>
         </div>
     </div>
+    </nav> -->
+    <nav id="top-right" class=" w-100 fixed-top">
+        <a href="https://www.iitg.ac.in/index">Home</a>
+        <a href="https://www.iitg.ac.in/iitg_page_details?page=1/about-us">About us</a>
     </nav>
-    <br><br><br>
-    <div class="container mt-5">
-        <div class="row">
-            <div class="col-md-6">
-             <!-- nav tab -->
-            <ul class="nav nav-tabs">
-                <li class="nav-item">
-                    <a href="#signup" class="nav-link active" data-bs-toggle="tab">
-                        Sign Up
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="#login" class="nav-link" data-bs-toggle="tab">
-                        Login
-                    </a>
-                </li>
-            </ul>
-            <!-- nav panes -->
-            <div class="tab-content">
-                <div class="tab-pane active container mt-3" id="signup">
-                    <img src="Images/signup-2.webp" class="w-25" alt="">
-                    <form class="reg-form">
-                        <input required name="fullName" type="text" placeholder=" Enter Cashier Name" class="mb-3 form-control">
-                        <input required name="email" type="email" placeholder=" Email" class="mb-3 form-control">
-                        <input required name="contact" type="number" placeholder=" Contact Number" class="mb-3 form-control">
-                        <!-- <input required name="username" type="text" placeholder=" Username" class="mb-3 form-control"> -->
-                        <input type="number" name="id" placeholder="Cashier ID" class="mb-3 form-control">
-                        <input required name="Password" type="text" placeholder=" Password" class="mb-3 form-control">
-                        <button type="submit" class="btn btn-primary w-100">Register</button>
-                    </form>
+    <div id="body">
+        <div id="register">
+            <div class="splash-container">
+                <div class="card">
+                    <div class="card-header pb-4 text-center bg-white">
+                        <a href="https://www.iitg.ac.in/">
+                            <img height="85rem" class="logo-img" src="/Images/iitg.ico" alt="logo">
+                        </a>
+                        <span  class="splash-description text-grey">Welcome to IITG GuestHouse System</span>
+                    </div>
+                    <div class="card-body">
+                        <form class="reg-form">
+                            <input required name="fullName" type="text" placeholder=" Enter Name" class="mb-3 form-control">
+                            <input required name="email" type="email" placeholder=" Email" class="mb-3 form-control">
+                            <input required name="contact" type="number" placeholder=" Contact Number" class="mb-3 form-control">
+                            <input type="number" name="id" placeholder="Cashier ID" class="mb-3 form-control">
+                            <input required name="Password" type="password" placeholder=" Password" class="mb-3 form-control">
+                            <button type="submit" class="btn btn-primary w-100">Register</button>
+                        </form>
+                    </div>
+                    <div class="card-footer bg-white text-center">
+                        <div class="card-footer-item card-footer-item-bordered">
+                            <a id="login-here" href="#" target="" class="footer-link">Login Here</a>
+                        </div>
+        
+                    </div>
                 </div>
-                <div class="tab-pane  container mt-3" id="login">
-                    <!-- <img src="Images/signup-2.webp" class="w-25" alt=""> -->
-                    <form class="login-form">
-                        <input type="email" placeholder=" Email" class="mb-3 form-control">
-                        <input type="text" placeholder=" Password" class="mb-3 form-control">
-                        <button type="submit" class="btn btn-primary w-100">Login</button>
-                    </form>
+                <div id="section">
+                <span class="span1" style="color:white;">© 2024 IITG Office Automation CCC</span> <br>
+                <span style="color:white;">We strongly recommend to use updated browsers only</span>
+                <br>
+                <img width="40%" src="/Images/main-desktop-browser-logos.png" alt="">
                 </div>
+                
             </div>
+        </div>
+        <div id="login">
+            <div class="splash-container">
+                <div class="card">
+                    <div class="card-header pb-4 text-center bg-white">
+                        <a href="https://www.iitg.ac.in/">
+                            <img height="85rem" class="logo-img" src="/Images/iitg.ico" alt="logo">
+                        </a>
+                        <span  class="splash-description text-grey">Welcome to IITG GuestHouse System</span>
+                    </div>
+                    <div class="card-body">
+                        <form class="login-form">
+                            <!-- <input required name="fullName" type="text" placeholder=" Enter Name" class="mb-3 form-control"> -->
+                            <input required name="email" type="email" placeholder=" Email" class="mb-3 form-control">
+                            <!-- <input required name="contact" type="number" placeholder=" Contact Number" class="mb-3 form-control"> -->
+                            <input type="number" name="id" placeholder="Cashier ID" class="mb-3 form-control">
+                            <input required name="Password" type="password" placeholder=" Password" class="mb-3 form-control">
+                            <button type="submit" class="btn btn-primary w-100">Login</button>
+                        </form>
+                    </div>
+                    <div class="card-footer bg-white text-center">
+                        <div class="card-footer-item card-footer-item-bordered">
+                            <a id="register-here" href="#" target="" class="footer-link">Sign up</a>
+                        </div>
+        
+                    </div>
+                </div>
+                <div id="section">
+                <span class="span1" style="color:white;">© 2024 IITG Office Automation CCC</span> <br>
+                <span style="color:white;">We strongly recommend to use updated browsers only</span>
+                <br>
+                <img width="40%" src="/Images/main-desktop-browser-logos.png" alt="">
+                </div>
+                
             </div>
-            <div class="d-flex justify-content-center align-item-center col-md-6 mt-5">
-                 <img src="Images/1662524665-469.avif" class="w-100">
-              
-               </div>
         </div>
     </div>
 </body>

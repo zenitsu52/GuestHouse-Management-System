@@ -7,7 +7,7 @@ let allArchiveData = [];
 let allCashData = [];
 let allCashArchData = [];
 
-let navBrand = document.querySelector(".navbar-brand");
+let navBrand = document.querySelector("#nav");
 let logoutBtn = document.querySelector(".logout-btn");
 let bookingForm = document.querySelector(".booking-fm");
 let allBInput = bookingForm.querySelectorAll("input");
@@ -54,7 +54,6 @@ if (sessionStorage.getItem("__au__") == null) {
 userInfo = JSON.parse(sessionStorage.getItem("__au__"));
 user = userInfo.email.split("@")[0];
 navBrand.innerHTML = userInfo.fullName;
-navBrand.style.color = "white";
 logoutBtn.onclick = () => {
   logoutBtn.innerHTML = "Please Wait...";
   setTimeout(() => {
@@ -115,7 +114,7 @@ function CheckInandCheckOut(element, array, keys) {
         allInHData.unshift(data)
         localStorage.setItem(user + "_allInHdata", JSON.stringify(allInHData))
         ShowData(element, array, keys);
-        showBookingEl();
+        // showBookingEl();
       }
       else if (tmp == "allArchivedata") {
         allBData.unshift(data)
@@ -178,7 +177,7 @@ bookingForm.addEventListener("submit", (e) => {
   // window.location.reload()
   ShowData(TBodyList, allBData, user + "_allBdata");
   showTotal();
-  showBookingEl();
+  // showBookingEl();
 });
 
 
@@ -303,6 +302,7 @@ for (let btn of btnbtn) {
   }
 }
 
+
 // Delete  Data Function
 function DelData(element, array, keys) {
   let allBDelBtn = element.querySelectorAll(".del-btn");
@@ -329,7 +329,7 @@ function DelData(element, array, keys) {
     };
   });
   showTotal();
-  showBookingEl();
+  // showBookingEl();
   showInhouseRoomCard();
 }
 
@@ -618,23 +618,23 @@ showTotal();
 
 // Show Booking Rooms Card
 
-function showBookingEl() {
-  showBookingRoomEl.innerHTML = '';
-  allBData.forEach((item, index) => {
-    showBookingRoomEl.innerHTML += `
-   <div class="card text-center px-0 col-md-2">
-         <div class="bg-success text-white fw-bold card-header">
-             ${item.room} 
-         </div>
-         <div class="card-body">
-            <p>${item.checkin}</p>
-            <p>To</p>
-            <p>${item.checkout}</p>
-          </div>
-    </div>`
-  })
-}
-showBookingEl();
+// function showBookingEl() {
+//   showBookingRoomEl.innerHTML = '';
+//   allBData.forEach((item, index) => {
+//     showBookingRoomEl.innerHTML += `
+//    <div class="card text-center px-0 col-md-2">
+//          <div class="bg-success text-white fw-bold card-header">
+//              ${item.room} 
+//          </div>
+//          <div class="card-body">
+//             <p>${item.checkin}</p>
+//             <p>To</p>
+//             <p>${item.checkout}</p>
+//           </div>
+//     </div>`
+//   })
+// }
+// showBookingEl();
 
 // Show Inhouse Room Card
 
@@ -679,7 +679,7 @@ function showInhouseRoomCard(){
        }
     })
   
-  showBookingEl();
+  // showBookingEl();
 }
 showInhouseRoomCard()
 

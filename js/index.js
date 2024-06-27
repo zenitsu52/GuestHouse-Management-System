@@ -5,6 +5,22 @@ let regBtn = regForm.querySelector('button');
 let loginForm = document.querySelector('.login-form')
 let allUserInput = loginForm.querySelectorAll('input')
 let loginBtn = loginForm.querySelector('button')
+let login = document.querySelector("#login-here")
+let register = document.querySelector("#register-here")
+
+let loginPage = document.querySelector("#login")
+let registerPage = document.querySelector("#register")
+
+
+
+login.onclick = ()=>{
+    loginPage.style.display = "block";
+    registerPage.style.display = "none";
+}
+register.onclick = ()=>{
+    loginPage.style.display = "none";
+    registerPage.style.display = "block";
+}
 
 //Registration Code
 if(localStorage.getItem("allUserInfo") != null){
@@ -36,7 +52,7 @@ regForm.onsubmit = function(e) {
                regBtn.innerText = "Registered"
                allUserInfo.push(data)
                localStorage.setItem("allUserInfo",JSON.stringify(allUserInfo))
-               swal("We are Glad to See You Soon!!",'Registration Successful','success').then(()=>{
+               swal('Registration Successful',"",'success').then(()=>{
                 location.reload()
                })
         }, 2000);
@@ -70,18 +86,23 @@ regForm.onsubmit = function(e) {
         })
         // console.log(checkEmail)
         if(checkEmail!=undefined){
-             if(checkEmail.Password == allUserInput[1].value){
-                loginBtn.innerText = "Please Wait..."
-                setTimeout(()=>{
-                    loginBtn.innerText = "Login"    
-                    window.location = "Profile/profile.html"
-                    checkEmail.Password = null;
-                    sessionStorage.setItem("__au__",JSON.stringify(checkEmail));
-                },2000)
-             }
-             else{
-                swal("Warning","Password is Incorrect",'warning')
-             }
+            if(checkEmail.id==allUserInput[1].value){
+                if(checkEmail.Password == allUserInput[2].value){
+                    loginBtn.innerText = "Please Wait..."
+                    setTimeout(()=>{
+                        loginBtn.innerText = "Login"    
+                        window.location = "Profile/profile.html"
+                        checkEmail.Password = null;
+                        sessionStorage.setItem("__au__",JSON.stringify(checkEmail));
+                    },2000)
+                 }
+                 else{
+                    swal("Warning","Password is Incorrect",'warning')
+                 }
+            }
+            else{
+                swal("Warning","ID is Incorrect",'warning')
+            }
         }
         else{
             swal("Warning","Email is not Registered",'warning')

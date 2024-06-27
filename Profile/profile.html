@@ -30,8 +30,13 @@
     <!--NAVBAR-->
     <nav class=" no-print navbar navbar-expand-md fixed-top navbar-light">
         <div class="container-fluid">
-            <img src="Profile Images//Images/IIT_Guwahati_Logo.svg.png" class="rounded-circle" width="60px">
-            <a href="#" class="fw-bold mx-4 navbar-brand">
+            <a id="logo" href="https://www.iitg.ac.in/">
+            <img src="Profile Images//Images/IIT_Guwahati_Logo.svg.png" class="rounded-circle" width="50px">
+            </a>
+            <button class="mx-4" style="border: 0; background-color: #ffffff;" >
+                <i class="fas fa-bars"></i>
+            </button>
+            <a style="text-decoration: none; font-size: 25px;" href="#" class="mx-4 text-black" id="nav">
                 GUESTHOUSE
             </a>
             <button class="navbar-toggler" id="button-drop" data-bs-toggle="collapse" data-bs-target="#myMenu">
@@ -42,37 +47,42 @@
                     <div class="input-group w-50 mx-5" id="search">
                         <input type="search" class="search-element form-control"
                             placeholder="Search by Name,Contact,Room no....">
-                        <span class="input-group-text action-btn  text-white btn">Search</span>
+                        <span class="input-group-text btn-serlog text-white btn text-center">Search</span>
                     </div>
-                    <button class="btn action-btn logout-btn text-white fw-bold">Log Out</button>
+                    <button class="btn logout-btn text-white"><img style="width: 30px;" src="/Images/logout.png" alt=""></button>
                 </ul>
             </div>
         </div>
     </nav>
-
-    <br><br><br>
-    <div class="container-fluid mt-5">
+    <br><br>
+                              
+    
+    <div class="container-fluid" id="body">
         <div class="row">
             <div class="col-md-12">
                 <!-- nav tab -->
                 <ul class="no-print nav nav-tabs">
                     <li class="nav-item ">
                         <a href="#booking" class="nav-link active  tab-btn " data-bs-toggle="tab">
+                            <i class="far fa-hospital"></i>
                             Booking
                         </a>
                     </li>
                     <li class="nav-item ">
                         <a href="#inhouse" class="nav-link tab-btn " data-bs-toggle="tab">
+                            <i class="far fa-hospital"></i>
                             In House
                         </a>
                     </li>
                     <li class="nav-item">
                         <a href="#archive" class="nav-link  tab-btn " data-bs-toggle="tab">
+                            <i class="far fa-hospital"></i>
                             Archive
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="#cashier" class="nav-link" data-bs-toggle="tab">
+                        <a href="#cashier" class="nav-link tab-btn" data-bs-toggle="tab">
+                            <i class="far fa-hospital"></i>
                             Cashier
                         </a>
                     </li>
@@ -86,14 +96,14 @@
                         <div class="row no-print text-center my-5 ">
                             <div class="col-md-4 ">
                                 <button data-bs-toggle="modal" data-bs-target="#registration-modal"
-                                    class="btn action-btn b-register-btn text-white">
+                                    class="btn action-btn b-register-btn">
                                     Register</button>
                             </div>
                             <div class="col-md-4 ">
-                                <button class="btn action-btn print-btn text-white">Print</button>
+                                <button class="btn action-btn print-btn">Print</button>
                             </div>
                             <div class="col-md-4 ">
-                                <button class="btn action-btn total-btn text-white">Total Bookings</button>
+                                <button class="btn action-btn total-btn">Total Bookings</button>
                             </div>
                         </div>
                         <div class="table-responsive">
@@ -101,15 +111,15 @@
                             <table class="table text-center table-striped">
                                 <thead>
                                     <tr>
-                                        <th class="no-print">Sr.No</th>
-                                        <th class="text-nowrap">Full Name</th>
-                                        <th class="text-nowrap">Contact</th>
-                                        <th class="text-nowrap">Room No.</th>
-                                        <th class="text-nowrap">Check-In</th>
-                                        <th class="text-nowrap">Check-Out</th>
-                                        <th class="text-nowrap">Registered At</th>
+                                        <th style="background-color: #008080; color: #ffffff;" class="no-print">Sr.No</th>
+                                        <th style="background-color: #008080; color: #ffffff;" class="text-nowrap">Full Name</th>
+                                        <th style="background-color: #008080; color: #ffffff;" class="text-nowrap">Contact</th>
+                                        <th style="background-color: #008080; color: #ffffff;" class="text-nowrap">Room No.</th>
+                                        <th style="background-color: #008080; color: #ffffff;" class="text-nowrap">Check-In</th>
+                                        <th style="background-color: #008080; color: #ffffff;" class="text-nowrap">Check-Out</th>
+                                        <th style="background-color: #008080; color: #ffffff;" class="text-nowrap">Registered At</th>
 
-                                        <th class="no-print">Action</th>
+                                        <th style="background-color: #008080; color: #ffffff;" class="no-print">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody class="booking-list">
@@ -129,14 +139,14 @@
                         <div class="row no-print text-center my-5 ">
                             <div class="col-md-4 ">
                                 <button data-bs-toggle="modal" data-bs-target="#inhouse-modal"
-                                    class="btn action-btn in-house-reg-btn text-white">
+                                    class="btn action-btn  in-house-reg-btn">
                                     Register</button>
                             </div>
                             <div class="col-md-4 ">
-                                <button class="btn action-btn print-btn text-white">Print</button>
+                                <button class="btn action-btn print-btn">Print</button>
                             </div>
                             <div class="col-md-4 ">
-                                <button class="btn action-btn total-btn text-white">Total InHouse</button>
+                                <button class="btn action-btn total-btn">Total InHouse</button>
                             </div>
                         </div>
                         <div class="table-responsive">
@@ -144,15 +154,15 @@
                             <table class="table text-center table-striped">
                                 <thead>
                                     <tr>
-                                        <th class="no-print">Sr.No</th>
-                                        <th>Full Name</th>
-                                        <th>Contact</th>
-                                        <th>Room No.</th>
-                                        <th>Check-In</th>
-                                        <th>Check-Out</th>
-                                        <th>Registered At</th>
+                                        <th style="background-color: #008080; color: #ffffff;" class="no-print">Sr.No</th>
+                                        <th style="background-color: #008080; color: #ffffff;">Full Name</th>
+                                        <th style="background-color: #008080; color: #ffffff;">Contact</th>
+                                        <th style="background-color: #008080; color: #ffffff;">Room No.</th>
+                                        <th style="background-color: #008080; color: #ffffff;">Check-In</th>
+                                        <th style="background-color: #008080; color: #ffffff;">Check-Out</th>
+                                        <th style="background-color: #008080; color: #ffffff;">Registered At</th>
 
-                                        <th class="no-print">Action</th>
+                                        <th style="background-color: #008080; color: #ffffff;" class="no-print">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody class="inhouse-list">
@@ -177,9 +187,9 @@
                                 Register</button>
                             </div> -->
                             <div class="no-print col-md-6 ">
-                                <button class="btn action-btn print-btn text-white">Print</button>
+                                <button class="btn action-btn print-btn">Print</button>
 
-                                <button class="btn action-btn total-btn text-white">Total Archives</button>
+                                <button class="btn action-btn total-btn">Total Archives</button>
                             </div>
                         </div>
                         <div class="table-responsive">
@@ -187,15 +197,15 @@
                             <table class="table text-center table-striped">
                                 <thead>
                                     <tr>
-                                        <th class="no-print">Sr.No</th>
-                                        <th>Full Name</th>
-                                        <th>Contact</th>
-                                        <th>Room No.</th>
-                                        <th>Check-In</th>
-                                        <th>Check-Out</th>
-                                        <th>Registered At</th>
+                                        <th style="background-color: #008080; color: #ffffff;" class="no-print">Sr.No</th>
+                                        <th style="background-color: #008080; color: #ffffff;">Full Name</th>
+                                        <th style="background-color: #008080; color: #ffffff;">Contact</th>
+                                        <th style="background-color: #008080; color: #ffffff;">Room No.</th>
+                                        <th style="background-color: #008080; color: #ffffff;">Check-In</th>
+                                        <th style="background-color: #008080; color: #ffffff;">Check-Out</th>
+                                        <th style="background-color: #008080; color: #ffffff;">Registered At</th>
 
-                                        <th class="no-print">Action</th>
+                                        <th style="background-color: #008080; color: #ffffff;" class="no-print">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody class="archive-list">
@@ -218,12 +228,12 @@
                                 <table class="table text-center table-striped">
                                     <thead>
                                         <tr>
-                                            <th>Sr.No</th>
-                                            <th>Cashier Name</th>
-                                            <th>Cashier ID</th>
-                                            <th>Room No</th>
-                                            <th>Date/Time</th>
-                                            <th>Amount</th>
+                                            <th style="background-color: #008080; color: #ffffff;">Sr.No</th>
+                                            <th style="background-color: #008080; color: #ffffff;">Cashier Name</th>
+                                            <th style="background-color: #008080; color: #ffffff;">Cashier ID</th>
+                                            <th style="background-color: #008080; color: #ffffff;">Room No</th>
+                                            <th style="background-color: #008080; color: #ffffff;">Date/Time</th>
+                                            <th style="background-color: #008080; color: #ffffff;">Amount</th>
 
                                         </tr>
                                     </thead>
@@ -240,18 +250,18 @@
 
                                 <div class="col-md-3 ">
                                     <button data-bs-toggle="modal" data-bs-target="#cashier-modal"
-                                        class="btn action-btn text-white">Add Cash</button>
+                                        class="btn action-btn">Add Cash</button>
                                 </div>
                                 <div class="col-md-3 ">
-                                    <button class="btn close-cashier-btn action-btn text-white">Close Cashier</button>
+                                    <button class="btn close-cashier-btn action-btn">Close Cashier</button>
                                 </div>
                                 <div class="col-md-3 ">
                                      
                                     <button onclick="showArchCashierFunc()" data-bs-toggle="modal" data-bs-target="#cashier-Arch-modal"
-                                        class="btn action-btn text-white">Archive Cashier</button>
+                                        class="btn action-btn">Archive Cashier</button>
                                 </div>
                                 <div class="col-md-3 ">
-                                    <button class="btn action-btn print-btn text-white">Print</button>
+                                    <button class="btn action-btn print-btn">Print</button>
                                 </div>
                             </div>
                         </div>
@@ -297,7 +307,7 @@
 
                         </div>
                         <div class="row">
-                            <button type="submit" class="btn action-btn  form-control text-white">Register</button>
+                            <button type="submit" class="btn action-btn btn-sub  form-control text-white">Register</button>
                             <button type="button" class="btn bg-danger d-none form-control text-white">Update</button>
 
                         </div>
@@ -342,7 +352,7 @@
 
                         </div>
                         <div class="row">
-                            <button type="submit" class="btn action-btn  form-control text-white">Register</button>
+                            <button type="submit" class="btn action-btn btn-sub   form-control text-white">Register</button>
                             <button type="button" class="btn bg-danger d-none form-control text-white">Update</button>
 
                         </div>
@@ -387,7 +397,7 @@
 
                         </div>
                         <div class="row">
-                            <button type="submit" class="btn action-btn  form-control text-white">Register</button>
+                            <button type="submit" class="btn action-btn btn-sub   form-control text-white">Register</button>
                             <button type="button" class="btn bg-danger d-none form-control text-white">Update</button>
 
                         </div>
@@ -425,7 +435,7 @@
                         </div>
 
                         <div class="row">
-                            <button type="submit" class="btn action-btn  form-control text-white">Register</button>
+                            <button type="submit" class="btn action-btn btn-sub   form-control text-white">Register</button>
 
                         </div>
 
